@@ -1,5 +1,5 @@
 trigger:
-- '*'
+- security-scan
 
 pool:
   vmImage: 'ubuntu-16.04'
@@ -46,7 +46,7 @@ steps:
 - task: SonarCloudPrepare@1
   displayName: 'Prepare SonarCloud analysis'
   inputs:
-    SonarCloud: 'SonarCloud connection 1'
+    SonarCloud: 'SonarCloud'
     organization: '$(SonarOrganization)'
     scannerMode: 'MSBuild'
     projectKey: '$(SonarProjectKey)'
@@ -87,7 +87,7 @@ steps:
 
 - task: SonarCloudPublish@1
   displayName: 'Publish SonarCloud quality gate results'
-
+  
 - task: PublishCodeCoverageResults@1
   displayName: 'Publish code coverage report'
   inputs:
